@@ -1,5 +1,5 @@
 ﻿0:: 
 {
-	Send, Skyreenactment5
+	Send, Password
 	Send, {enter}
 }
