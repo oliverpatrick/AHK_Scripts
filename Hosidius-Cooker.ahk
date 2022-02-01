@@ -1,69 +1,74 @@
-﻿
+﻿#SingleInstance force
+
+
+;Prerequistes - 
+;RuneLite window = x: 207	y: 95	w: 1476	h: 791
+; Client
+
+
+1::
+loop {
+
 ;Random Variables Declarations
 	;Click speed
 	Random, clickSpeed1, 500, 700
 	Random, clickSpeed2, 1000, 2000
 		;Sleeps
 		Random, genericSleep, 200, 300
+		Random, longerSleep, 300, 500
 		Random, s2, 1000, 2000
 
 		Random, walkToRange, 3000, 3500
-		Random cookingSleepTime, 48000, 50000
+		Random cookingSleepTime, 64000, 68000
 
 ;coordinate variables
-	;Desposit Button Bank
-	Random, depositX, 869, 745
-	Random, depositY, 904, 782
+	;Click Range
+	Random, rangeX, 460, 481
+	Random, rangeY, 62, 91
 		;Bank
-		Random, bankX, 583, 742
-		Random, bankY, 618, 781
+		Random, bankChestX, 340, 355
+		Random, bankChestY, 478, 501
+			;Desposit Button Bank
+			Random, depositX, 670, 714
+			Random, depositY, 477, 522
+				;Banked Karam
+				Random, karamX, 420, 465
+				Random, karamY, 211, 245	
+					;Screen coords
+					Random screenX, 15, 3052
+					Random screenY, 33, 1035
 
-			;Banked Karam
-			Random, karamX, 613, 464
-			Random, karamY, 647, 493
-			;Cook Karam
-			Random, cookKaramX, 454, 156
-			Random, cookKaramY, 604, 219
-			;Click Range
-			Random, rangeX, 785, 156
-			Random, rangeY, 809, 178
-			
+;mouseSpeeds
+	Random, mouseSpeed, 3, 5
 
-clickRange() {
-	MouseMove, rangeX, rangeY, clickSpeed1
+; click range
+	MouseMove, rangeX, rangeY, mouseSpeed
+	click
 	sleep, walkToRange
-	Send {2}
-	sleep, cookingSleepTime
-	clickCookKaram()
-}
-
-clickCookKaram() {
-	MouseMove, cookKaramX, cookKaramY, clickSpeed1
-	sleep, cookingSleepTime
-	bankItems()
-}
-
-bankItems() {
-	MouseMove, bankX, bankY, walkToRange
 	sleep, genericSleep
-	MouseMove, depositX, depositY, clickSpeed1
-	sleep, genericSleep,
-	MouseMove, karamX, karamY, genericSleep
-	sleep, genericSleep 
+	Send {space}
+	Mousemove, screenX, screenY, mouseSpeed
+	sleep, cookingSleepTime
+
+	; click bank
+	MouseMove, bankChestX, bankChestY, mouseSpeed
+	click
+	sleep, walkToRange
+	sleep, genericSleep
+
+	; deposit
+	MouseMove, depositX, depositY, mouseSpeed
+	click
+	sleep, longerSleep,
+	sleep, longerSleep
+
+	; withdraw
+	MouseMove, karamX, karamY, mouseSpeed
+	click
+	sleep, longerSleep 
 	Send {escape}
 	sleep, genericSleep
-	clickRange()
-}
 
-;loop
-;clickRange - wait to run to range, wait to click cook, 
-;clickCookKaram - wait to fill inv, wait to click bank
-;clickBank - click deposit, clickkaram, click range
-
-
-
-1::Loop {
-	clickRange()
 }
 
 2::reload
