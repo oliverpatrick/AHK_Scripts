@@ -3,6 +3,7 @@
 
 ;Prerequistes - 
 ;RuneLite window = x: 207	y: 95	w: 1476	h: 791
+;Client zoom: 400/896
 ; Client
 
 
@@ -23,11 +24,11 @@ loop {
 
 ;coordinate variables
 	;Click Range
-	Random, rangeX, 460, 481
-	Random, rangeY, 62, 91
+	Random, rangeX, 476, 492
+	Random, rangeY, 74, 83
 		;Bank
-		Random, bankChestX, 340, 355
-		Random, bankChestY, 478, 501
+		Random, bankChestX, 336, 347
+		Random, bankChestY, 476, 497
 			;Desposit Button Bank
 			Random, depositX, 670, 714
 			Random, depositY, 477, 522

@@ -3,7 +3,8 @@
 #SingleInstance force
 
 ;Prerequistes - 
-;RuneLite window = x: 87, y: 14 width: 1723, height: 860
+;RuneLite window = x: 207	y: 95	w: 1476	h: 791
+;Client zoom: 896/896
 ; Client
 
 1:: 
@@ -27,17 +28,17 @@ loop {
 
 ;coordinate variables
 	;Bank
-	Random, bankX, 372, 566
-	Random, bankY, 36, 175
+	Random, bankX, 383, 470
+	Random, bankY, 100, 176
 		;Bank Logs
-		Random, bankLogsX, 327, 372
-		Random, bankLogsY, 346, 385
+		Random, bankLogsX, 272, 310
+		Random, bankLogsY, 327, 352
 			;Inventory knife
-			Random, knifeX, 1067, 1110
-			Random, knifeY, 384, 421
+			Random, knifeX, 893, 930
+			Random, knifeY, 358, 385
 				;Inventory logs
-				Random, invLogsX, 1145, 1197
-				Random, invLogsY, 387, 425
+				Random, invLogsX, 960, 991
+				Random, invLogsY, 350, 386
 					;Screen coords
 					Random screenX, 15, 1000
 					Random screenY, 1752, 954
