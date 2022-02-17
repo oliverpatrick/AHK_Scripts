@@ -1,3 +1,4 @@
+#IfWinActive ahk_exe RuneLite.exe
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #Warn  ; Enable warnings to assist with detecting common errors.
 #SingleInstance, Force
@@ -6,7 +7,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 ;RuneLite window = x: 207	y: 95	w: 1243	h: 791
 
 ;GUI
-Gui, Show, x800 y100 w220 h300, Tithe Farm Script
+Gui, Show, x800 y100 w220 h300, Bow Stringer Script
 Gui, Add, Button, w200 h30 gSet_Dimensions, Set Window Dimensions
 Gui, Add, Button, w200 h30 gIngame_Setup, In Game Setup
 Gui, Add, Button, w200 h30 gScript_Start, Script Start
@@ -16,7 +17,7 @@ return
 
 ; LABELS
 Set_Dimensions:
-    WinMove, OpenOSRS, , 207, 95, 1243, 791
+    WinMove, RuneLite, , 0, 0, 809, 534
     return
 
 Ingame_Setup:
@@ -34,28 +35,28 @@ Script_Start:
 		Random, genericSleep, 200, 300
 		Random, longerSleep, 300, 500
 
-		Random, makingWineSleepTime, 17000, 18500
+		Random, makingBowsSleepTime, 17000, 18500
 
 ;coordinate variables
-	;Withdraw jug and grapes
-	Random, jugX, 206, 227
-	Random, jugY, 160, 192
-  Random, grapesX, 282, 304
-  Random, grapesY, 160, 185
+	;Withdraw bows and bowstrings
+	Random, bowX, 79, 98
+	Random, bowY, 111, 134
+  Random, bowstringX, 128, 144
+  Random, bowstringY, 111, 129
 
-  ;Wine in inventory
-  Random, wineInvX, 902, 916
-  Random, wineInvY, 365, 383
+  ;Bow in inventory
+  Random, bowInvX, 572, 597
+  Random, bowInvY, 243, 268
 
-  ;Ingredients in Inventory
-  Random, jugInvX, 968, 986
-  Random, jugInvY, 524, 547
-  Random, grapesInvX, 1034, 1050
-  Random, grapesInvY, 524, 547
+  ;Parts in Inventory
+  Random, unstrungBowInvX, 615, 636
+  Random, unstrungBowInvY, 352, 376
+  Random, bowstringInvX, 612, 631
+  Random, bowstringInvY, 387, 407
 
   ;Bank
-  Random, bankX, 352, 442
-  Random, bankY, 102, 170
+  Random, bankX, 335, 432
+  Random, bankY, 103, 182 
 
   ;Screen coords
   Random screenX, 15, 3052
@@ -66,16 +67,16 @@ Script_Start:
   Random, mouseSpeed2, 5, 8
 
 	; click mix ingredients
-	MouseMove, jugInvX, jugInvY, mouseSpeed
+	MouseMove, unstrungBowInvX, unstrungBowInvY, mouseSpeed
 	click
 	sleep, genericSleep
-  MouseMove, grapesInvX, grapesInvY, mouseSpeed
+  MouseMove, bowstringInvX, bowstringInvY, mouseSpeed
   click
   sleep, longerSleep
   sleep, longerSleep
   sleep, longerSleep
   send, {space}
-  sleep, makingWineSleepTime
+  sleep, makingBowsSleepTime
   sleep, genericSleep
 
   ; bank wines
@@ -85,15 +86,15 @@ Script_Start:
   
 	; deposit
   sleep, longerSleep
-	MouseMove, wineInvX, wineInvY, mouseSpeed2
+	MouseMove, bowInvX, bowInvY, mouseSpeed2
 	click
 	sleep, longerSleep,
 
   ; click ingredients
-  MouseMove, jugX, jugY, mouseSpeed2
+  MouseMove, bowX, bowY, mouseSpeed2
   click
   sleep, genericSleep
-  MouseMove, grapesX, grapesY, mouseSpeed
+  MouseMove, bowstringX, bowstringY, mouseSpeed
   click
   sleep, genericSleep
   send, {escape}
